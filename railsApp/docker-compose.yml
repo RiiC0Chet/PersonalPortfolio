@@ -22,8 +22,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data  # Create a volume for storing database data
     environment:
-      POSTGRES_USER: postgres  # Set the username for database access
-      POSTGRES_PASSWORD: postgres  # Set the password for database access
+      POSTGRES_USER: ${DATABASE_USERNAME} # Set the username for database access
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}  # Set the password for database access
 
 # Define a volume for storing PostgreSQL data
 volumes:

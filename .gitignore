@@ -1,0 +1,5 @@
+# Ignorar el archivo de variables de entorno
+.env
+
+# Ignorar el archivo master.key de Rails
+railsApp/config/master.key
