@@ -2,6 +2,10 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
   
+    before_action lambda {
+      resize_before_save(user_params[:avatar], 500, 500)
+    }, only: [:update]
+
     def index
       @users = User.all
     end
@@ -46,6 +50,22 @@ class UsersController < ApplicationController
     end
   
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :avatar)
     end
+
+    def resize_before_save(image_param, width, height)
+      return unless image_param
+
+      begin
+        ImageProcessing::MiniMagick
+          .source(image_param)
+          .resize_to_fit(width, height)
+          .call(destination: image_param.tempfile.path)
+      rescue StandardError => _e
+        # Do nothing. If this is catching, it probably means the
+        # file type is incorrect, which can be caught later by
+        # model validations.
+      end
+    end
+
   end
