@@ -1,39 +1,72 @@
-/* app/assets/stylesheets/custom.css */
-.user-profile {
-    max-width: 400px;
-    margin: 0 auto;
+    .user-show {
+    background-color: #a9d6c3; /* Color de fondo general */
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
   }
   
-  .avatar-container {
+  .profile-header {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
   }
   
   .avatar {
-    border-radius: 50%;
-    border: 2px solid #ddd;
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .avatar:hover {
+    transform: scale(1.1);
   }
   
-  .user-details {
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .user-info h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .user-info p {
+    font-size: 18px;
+    margin: 5px 0 0;
+  }
+  
+  .summary {
+    background-color: #f7e7e7; /* Fondo rosa claro */
+    padding: 15px;
     margin-bottom: 20px;
   }
   
-  .actions .btn {
-    margin: 5px;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 5px;
+  .sections {
+    display: flex;
+    gap: 20px;
   }
   
-  .actions .btn-primary {
-    background-color: #007bff;
+  .section {
+    background-color: #f0f0f0; /* Fondo gris claro */
+    padding: 15px;
+    flex: 1;
   }
   
-  .actions .btn-secondary {
-    background-color: #6c757d;
+  .section h2 {
+    margin-top: 0;
+    font-size: 20px;
   }
+  
+  .project-item, .study-item, .certificate-item {
+    background-color: #e48686; /* Fondo rojo claro */
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .project-item h3, .study-item h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
