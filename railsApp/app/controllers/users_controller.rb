@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
   
     before_action lambda {
-      resize_before_save(user_params[:avatar], 500, 500)
+      resize_before_save(user_params[:avatar], 1000, 1000)
     }, only: [:update]
 
     def index
