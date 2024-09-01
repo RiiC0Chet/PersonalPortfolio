@@ -1,0 +1,47 @@
+<%= form_with(model: education, local: true) do |form| %>
+  <% if education.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(education.errors.count, "error") %> prohibited this education from being saved:</h2>
+
+      <ul>
+        <% education.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+
+  <div class="field">
+    <%= form.label :average_grade %>
+    <%= form.number_field :average_grade, step: :any %>
+  </div>
+
+  <div class="field">
+    <%= form.label :learned %>
+    <%= form.text_field :learned, value: education.learned.join(", ") %>
+  </div>
+  
+    <div class="field">
+        <%= form.label :user_id, "User" %>
+        <%= form.collection_select :user_id, User.all, :id, :email, prompt: "Select User" %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

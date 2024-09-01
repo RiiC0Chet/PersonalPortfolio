@@ -24,8 +24,10 @@
 <body>
   <div style="text-align: right;">
     <% if user_signed_in? %>
-      <p>Welcome, <%= current_user.email %>!</p>
-      <%= button_to("Log Out", destroy_user_session_path, method: :delete ) %>
+      <div class="header-actions">
+        <p class="summary-text">Welcome, <%= current_user.email %>!</p>
+        <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "logout-button" ) %>
+      </div>
     <% else %>
       <div class="auth-buttons">
         <%= button_to("Sign in", new_user_session_path, class: "auth-button") %>

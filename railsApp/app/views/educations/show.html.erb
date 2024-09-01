@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Education</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @education.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @education.description %>
+</p>
+
+<p>
+  <strong>Learned:</strong>
+  <%= @education.learned.join(", ") %>
+</p>
+
+<p>
+  <strong>Average grade:</strong>
+  <%= @education.average_grade%>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <% if @education.avatar.attached? %>
+    <%= image_tag @education.avatar, size: "100x100" if @education.avatar.attached? %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_education_path(@education) %> |
+<%= link_to 'Back', educations_path %>

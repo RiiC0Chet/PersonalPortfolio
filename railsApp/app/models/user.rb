@@ -18,4 +18,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one_attached :avatar
+
+  has_many :projects
+  has_many :educations, dependent: :destroy
+  has_many :experiences, dependent: :destroy
 end

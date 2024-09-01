@@ -17,11 +17,6 @@
     width: 300px;
     height: 300px;
     margin-right: 20px;
-    transition: transform 0.3s ease;
-  }
-
-  .avatar:hover {
-    transform: scale(1.05);
   }
   
   .avatar-img {
@@ -50,7 +45,7 @@
   .summary-text, .section-title {
     color: white; /* Fondo rosa claro */
   }
-  
+
   .sections {
     display: flex;
     gap: 20px;
@@ -81,25 +76,133 @@
   button {
     background: none;
     color: black;
-    border: 2px solid #f7e7e7;
-    padding: 0.5em 1em; /* Botones más pequeños */
+    border: 2px solid #ddd;
+    padding: 0.5em 1em; /* Smaller buttons */
     font-size: 1em;
-    border-radius: 0; /* Esquinas rectas */
+    border-radius: 8px; /* Rounded corners */
     cursor: pointer;
-    transition: all 0.25s ease-in-out;
-    display: inline-block; /* Para que estén uno al lado del otro */
+    transition: transform 0.3s ease;
+    display: inline-block; /* To keep them in the same line */
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white; /* Ensure background color is set */
+    margin-bottom: 1rem; /* Add margin below the buttons */
+  }
+  
+  button:hover {
+    transform: scale(1.04);
+  }
+  
+  /* Container for the buttons */
+  .auth-buttons {
+    display: flex; /* To keep the buttons in the same line */
+    justify-content: flex-end; /* Aligns the buttons to the right */
+    gap: 10px; /* Space between the buttons */
+  }
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-button:hover {
-    border-color: #f7e7e7;
-    color: white;
-    box-shadow: 0 0.6em 0.6em -0.3em #f7e7e7;
-    transform: translateY(-0.3em);
+.project-card-link {
+  text-decoration: none; /* Remove underline from link */
+  color: inherit; /* Inherit text color */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%; /* Make the card take the full width of the container */
+  display: flex; /* Ensure that child elements are in line */
+  align-items: center; /* Vertically align the elements */
+  gap: 1rem; /* Space between the icon and the content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background-color: white; /* Ensure background color is set */
 }
 
-/* Contenedor de los botones */
-.auth-buttons {
-    display: flex; /* Para que los botones estén en la misma línea */
-    justify-content: flex-end; /* Alinea los botones a la derecha */
-    gap: 10px; /* Espacio entre los botones */
+.project-card-link:hover {
+  transform: scale(1.02);
+}
+
+.project-icon .icon {
+  width: 50px;
+  height: 50px;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column; /* Align title and description in a column */
+}
+
+.project-title h3 {
+  margin: 0; /* Remove the top margin */
+  font-size: 1.2rem;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Align items vertically in the center */
+  gap: 1rem; /* Space between the welcome text and the button */
+}
+
+.education-section {
+  flex: 1;
+  margin: 10px; /* Add margin around the education section */
+}
+
+.education-section-title {
+  color: black;
+  text-align: center; /* Center the title text */
+  width: 100%; /* Ensure the title takes the full width of the container */
+}
+
+.educations {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  gap: 0.5rem;
+}
+
+.education-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0; /* Set background color to grey */
+  width: 300px; /* Make the card smaller */
+  height: 30px; /* Set a fixed height */
+  text-decoration: none; /* Remove underline from link */
+  color: inherit; /* Inherit text color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.education-card:hover {
+  transform: scale(1.02);
+}
+
+.education-icon img {
+  width: 50px;
+  height: 50px;
+}
+
+.education-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.education-title h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.education-description {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: #666;
 }

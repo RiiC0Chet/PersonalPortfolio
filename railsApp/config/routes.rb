@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   resources :users
+  resources :projects
+  resources :educations
+  resources :experiences
+
 
   root 'users#show', defaults: { id: '1' }
 

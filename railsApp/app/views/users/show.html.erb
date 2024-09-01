@@ -7,6 +7,23 @@
       <h1>Jose Luis Rico Ramos</h1>
       <p> Software Eng.. | ... </p>
     </div>
+    <div class="education-section">
+      <h2 class="education-section-title">Education</h2>
+      <div class="educations">
+        <% @user.educations.each do |education| %>
+          <%= link_to education_path(education), class: "education-card" do %>
+            <div class="education-icon">
+              <%= image_tag education.avatar, size: "30x30" if education.avatar.attached? %>
+            </div>
+            <div class="education-content">
+              <div class="education-title">
+                <h3><%= education.title %></h3>
+              </div>
+            </div>
+          <%end%>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="summary">
@@ -17,20 +34,43 @@
     <div class="section">
       <h2 class="section-title">Projects</h2>
       <div class="projects">
-
-      </div>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">Education</h2>
-      <div class="studies">
-
+        <% @user.projects.each do |project| %>
+          <%= link_to project_path(project), class: "project-card-link" do %>
+            <div class="project-icon">
+              <%= image_tag project.avatar, size: "50x50" if project.avatar.attached? %>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3><%= project.title %></h3>
+              </div>
+              <div class="project-description">
+                <p><%= project.description %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
     <div class="section">
       <h2 class="section-title">Experience</h2>
-      <div class="certificates">
+      <div class="projects">
+
+        <% @user.experiences.each do |experience| %>
+          <%= link_to experience_path(experience), class: "project-card-link" do %>
+            <div class="project-icon">
+              <%= image_tag experience.avatar, size: "50x50" if experience.avatar.attached? %>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3><%= experience.title %></h3>
+              </div>
+              <div class="project-description">
+                <p><%= experience.description %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
 
       </div>
     </div>

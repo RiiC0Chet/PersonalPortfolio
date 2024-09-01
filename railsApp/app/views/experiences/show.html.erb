@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Experience</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @experience.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @experience.description %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <% if @experience.avatar.attached? %>
+    <%= image_tag @experience.avatar, size: "100x100" %>
+  <% end %>
+</p>
+
+<h2>Projects</h2>
+<ul>
+  <% @experience.projects.each do |project| %>
+    <li><%= link_to project.title, project_path(project) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_experience_path(@experience) %> |
+<%= link_to 'Back', experiences_path %>
