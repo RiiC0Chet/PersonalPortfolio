@@ -1,3 +1,5 @@
+<div class="field">
+
 <%= form_with(model: experience, local: true) do |form| %>
   <% if experience.errors.any? %>
     <div id="error_explanation">
@@ -36,3 +38,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+</div>

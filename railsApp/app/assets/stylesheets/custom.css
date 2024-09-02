@@ -1,6 +1,15 @@
   body {
     font-family: 'Baskervville SC', serif;
-    background-color: rgb(59, 53, 53);
+    background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ213MzRzbGYzOGJvOXAwZ2xiNzY2aXp6NWJ6em83eXNwbG5oOGxwNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1lvotGQwhzi6O0gQtV/giphy.webp');
+    background-size: cover;
+
+  }
+  .field, body h2
+  {
+    background-color: white;
+  }
+  .section-title{
+    background-color: black;
   }
    .user-show {
     background-color: white; /* Color de fondo general */
@@ -37,7 +46,7 @@
   }
   
   .summary {
-    background-color: rgb(59, 53, 53); /* Fondo rosa claro */
+    background-color: black; /* Fondo rosa claro */
     padding: 15px;
     margin-bottom: 20px;
   }
@@ -52,7 +61,7 @@
   }
   
   .section {
-    background-color: rgb(59, 53, 53); /* Fondo gris claro */
+    background-color: black; /* Fondo gris claro */
     padding: 15px;
     flex: 1;
   }
@@ -100,26 +109,26 @@
     justify-content: flex-end; /* Aligns the buttons to the right */
     gap: 10px; /* Space between the buttons */
   }
-.projects {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    gap: 1rem; /* Space between grid items */
+  }
 
-.project-card-link {
-  text-decoration: none; /* Remove underline from link */
-  color: inherit; /* Inherit text color */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  width: 100%; /* Make the card take the full width of the container */
-  display: flex; /* Ensure that child elements are in line */
-  align-items: center; /* Vertically align the elements */
-  gap: 1rem; /* Space between the icon and the content */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  background-color: white; /* Ensure background color is set */
-}
+  .project-card-link {
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex; /* Ensure that child elements are in line */
+    align-items: center; /* Vertically align the elements */
+    gap: 1rem; /* Space between the icon and the content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: white; /* Ensure background color is set */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
 
 .project-card-link:hover {
   transform: scale(1.02);

@@ -1,3 +1,5 @@
+<div class="field">
+
 <%= form_with(model: education, local: true) do |form| %>
   <% if education.errors.any? %>
     <div id="error_explanation">
@@ -45,3 +47,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+</div>
