@@ -49,7 +49,9 @@
   </div>
 
   <div class="summary">
-    <p class="summary-text"> Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text </p>
+    <p class="summary-text"> Lorem ipsum dolor sit amet consectetur adipiscing elit ridiculus, dictum dui potenti at ac volutpat parturient, sodales bibendum placerat interdum posuere erat fermentum. Nunc senectus odio eleifend aenean ad nascetur quis, luctus faucibus augue vestibulum habitant aliquam praesent, et tincidunt porta potenti sed neque. Ad dictum sodales malesuada et integer nostra scelerisque cubilia iaculis vivamus nunc, felis parturient nec a mi netus pharetra senectus hac. <br><br>
+
+Congue curabitur fames faucibus venenatis cubilia eleifend, nostra urna mi morbi aliquam massa, nisi sed ullamcorper ultrices justo. Fermentum felis dignissim augue diam cursus dictum elementum, accumsan sagittis lobortis sed in a natoque integer, mi etiam phasellus cubilia faucibus tortor. Penatibus quis platea curae nisi cum senectus mauris tincidunt primis praesent, nulla ridiculus vestibulum mattis cursus magnis urna pharetra dictum, commodo malesuada diam aenean porta nostra nullam risus erat. </p>
   </div>
 
   <div class="sections">
@@ -59,7 +61,7 @@
         <% @user.projects.each do |project| %>
           <%= link_to project_path(project), class: "project-card-link" do %>
             <div class="project-icon">
-              <%= image_tag project.avatar, size: "50x50" if project.avatar.attached? %>
+              <%= image_tag project.avatar, size: "100x100" if project.avatar.attached? %>
             </div>
             <div class="project-content">
               <div class="project-title">
@@ -76,27 +78,31 @@
   </div>
 
 
-  <!-- Formulario de contacto -->
-  <div class="contact-form mt-4">
-    <h2 class="section-title">Contact Me</h2>
-      <%= form_with url: contacts_path , method: :post, local: true do |form| %>
-        <div class="form-group">
-          <%= form.label :email, "Email", class: "form-label" %>
-          <%= form.email_field :email, class: "form-control", required: true %>
-        </div>
-        <div class="form-group">
-          <%= form.label :subject, "Asunto", class: "form-label" %>
-          <%= form.text_field :subject, class: "form-control", required: true %>
-        </div>
-        <div class="form-group">
-          <%= form.label :message, "Texto", class: "form-label" %>
-          <%= form.text_area :message, class: "form-control", rows: 5, required: true %>
-        </div>
-        <div class="form-group">
-          <%= form.submit "Enviar", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
+<!-- Formulario de contacto -->
+<div class="contact-form mt-4">
+  <h2 class="section-title section-title-contact">
+    Contact Me
+    <span class="toggle-icon">+</span>
+  </h2>
+  <div id="contact-form-container" style="display: none;">
+    <%= form_with url: contacts_path, method: :post, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :email, "Email", class: "form-label" %>
+        <%= form.email_field :email, class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :subject, "Subject", class: "form-label" %>
+        <%= form.text_field :subject, class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :message, "Message", class: "form-label" %>
+        <%= form.text_area :message, class: "form-control", rows: 5, required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.submit "Enviar", class: "btn" %>
+      </div>
+    <% end %>
   </div>
+</div>
 
 </div>
