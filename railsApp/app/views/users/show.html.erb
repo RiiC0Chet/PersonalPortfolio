@@ -68,7 +68,7 @@ Congue curabitur fames faucibus venenatis cubilia eleifend, nostra urna mi morbi
                 <h3><%= project.title %></h3>
               </div>
               <div class="project-description">
-                <p><%= project.description %></p>
+                <p><%= truncate(project.description, length: 350, omission: '...') %></p>
               </div>
             </div>
           <% end %>
@@ -104,5 +104,41 @@ Congue curabitur fames faucibus venenatis cubilia eleifend, nostra urna mi morbi
     <% end %>
   </div>
 </div>
+
+<h1>Weather Forecast for <%= @city %></h1>
+
+<% if @weather_data %>
+  <h2>Current Weather</h2>
+  <p>Temperature: <%= @weather_data['hourly']['temperature_2m'].first %>°C</p>
+  <p>Relative Humidity: <%= @weather_data['hourly']['relative_humidity_2m'].first %>%</p>
+  <p>Wind Speed: <%= @weather_data['hourly']['wind_speed_120m'].first %> km/h</p>
+
+  <h2>Forecast for the next 3 days</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Max Temperature (°C)</th>
+        <th>Min Temperature (°C)</th>
+        <th>Average Relative Humidity (%)</th>
+        <th>Average Wind Speed (km/h)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @weather_data['hourly']['time'].each_slice(24).with_index do |times, index| %>
+        <% next if index >= 3 %>
+        <tr>
+          <td><%= times.first.to_date %></td>
+          <td><%= @weather_data['hourly']['temperature_2m'][index*24, 24].max %></td>
+          <td><%= @weather_data['hourly']['temperature_2m'][index*24, 24].min %></td>
+          <td><%= (@weather_data['hourly']['relative_humidity_2m'][index*24, 24].sum / 24.0).round(2) %></td>
+          <td><%= (@weather_data['hourly']['wind_speed_120m'][index*24, 24].sum / 24.0).round(2) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No weather data available.</p>
+<% end %>
 
 </div>

@@ -1,5 +1,8 @@
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
+  require 'net/http'
+  require 'json'
+
     before_action :set_user, only: [:show, :edit, :update, :destroy]
   
     before_action lambda {
@@ -11,6 +14,7 @@ class UsersController < ApplicationController
     end
   
     def show
+      @weather_data = fetch_weather_data
     end
   
     def new
@@ -67,5 +71,16 @@ class UsersController < ApplicationController
         # model validations.
       end
     end
+
+    def fetch_weather_data
+      # URL de la API de Open-Meteo
+      url = "https://api.open-meteo.com/v1/forecast?latitude=53.3331&longitude=-6.2489&hourly=temperature_2m,relative_humidity_2m,wind_speed_120m&timezone=GMT"
+      
+      # Realiza la solicitud HTTP
+      uri = URI(url)
+      response = Net::HTTP.get(uri)
+      JSON.parse(response)
+    end
+
 
   end

@@ -13,6 +13,7 @@ services:
       - db  # Specify dependency on the database service
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432/rails_7_with_docker  # Database connection parameters
+    stdin_open: true  # Abrir stdin
 
   # Service for the PostgreSQL database
   db:

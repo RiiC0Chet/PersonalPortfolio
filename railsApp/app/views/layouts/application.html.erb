@@ -41,7 +41,6 @@
   <nav class="main-nav" style="color: white">
     <ul>
       <li ><%= link_to("Inicio", root_path, method: :get, class: "nav-button", data: { turbo: "false" }) %></li>
-      <li><%= link_to("Acerca de", "#", method: :get, class: "nav-button") %></li>
       <li><%= link_to("Contacto", root_path(anchor: "contact-form"), method: :get, class: "nav-button", data: { turbo: "false" }) %></li>
     </ul>
   </nav>
