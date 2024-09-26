@@ -9,20 +9,29 @@ class UsersController < ApplicationController
       resize_before_save(user_params[:avatar], 1000, 1000)
     }, only: [:update]
 
+    before_action :authenticate_user!, except: [:show]
+    after_action :verify_authorized, except: :index
+    after_action :verify_policy_scoped, only: :index
+
     def index
       @users = User.all
+      authorize current_user
     end
   
     def show
       @weather_data = fetch_weather_data
+      @user = User.find(1)
+      authorize @user
     end
   
     def new
       @user = User.new
+      authorize current_user
     end
   
     def create
       @user = User.new(user_params)
+      authorize current_user
   
       if @user.save
         redirect_to @user, notice: 'User was successfully created.'
@@ -32,9 +41,11 @@ class UsersController < ApplicationController
     end
   
     def edit
+      authorize current_user
     end
   
     def update
+      authorize current_user
       if @user.update(user_params)
         redirect_to @user, notice: 'User was successfully updated.'
       else
@@ -43,6 +54,7 @@ class UsersController < ApplicationController
     end
   
     def destroy
+      authorize current_user
       @user.destroy
       redirect_to users_url, notice: 'User was successfully destroyed.'
     end

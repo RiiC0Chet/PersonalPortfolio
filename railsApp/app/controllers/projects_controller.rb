@@ -1,26 +1,35 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
 
+  before_action :authenticate_user!, except: [:show]
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+
   # GET /projects or /projects.json
   def index
     @projects = Project.all
+    authorize current_user
   end
 
   # GET /projects/1 or /projects/1.json
   def show
+    authorize @project
   end
 
   # GET /projects/new
   def new
     @project = Project.new
+    authorize current_user
   end
 
   # GET /projects/1/edit
   def edit
+    authorize current_user
   end
 
   # POST /projects or /projects.json
   def create
+    authorize current_user
     @project = Project.new(project_params)
 
     respond_to do |format|
@@ -36,6 +45,7 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
+    authorize current_user
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: "Project was successfully updated." }
@@ -49,6 +59,7 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
+    authorize current_user
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
