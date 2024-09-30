@@ -1,55 +1,51 @@
+document.addEventListener("DOMContentLoaded", function() {
+  const projectsBtn = document.getElementById('projectsBtn');
+  const homeBtn = document.getElementById('homeBtn');
+  const infoBtn = document.getElementById('infoBtn');
+  const contactBtn = document.getElementById('contactBtn');
+  const APItBtn = document.getElementById('APIBtn');
 
-document.addEventListener('DOMContentLoaded', function() {
-    var contactFormTitle = document.querySelector('.section-title-contact');
-    var contactFormContainer = document.getElementById('contact-form-container');
-    var toggleIcon = document.querySelector('.toggle-icon');
-  
-    if (contactFormTitle && contactFormContainer && toggleIcon) {
-      contactFormTitle.addEventListener('click', function() {
-        if (contactFormContainer.style.display === 'none' || contactFormContainer.style.display === '') {
-          contactFormContainer.style.display = 'block';
-          toggleIcon.textContent = '-'; // Cambiar el signo a "-"
-        } else {
-          contactFormContainer.style.display = 'none';
-          toggleIcon.textContent = '+'; // Cambiar el signo a "+"
-        }
-      });
-    }
-  });
+  const projectsSection = document.getElementById('projects');
+  const introSection = document.getElementById('intro');
+  const infoSection = document.getElementById('info');
+  const contactSection = document.getElementById('contact');
+  const apiSection = document.getElementById('api');
 
-  document.addEventListener("DOMContentLoaded", function() {
-    // Selecciona el enlace del botón "Contacto"
-    const contactButton = document.querySelector(".nav-button[href*='#contact-form']");
-  
+  const buttons = [homeBtn, projectsBtn, infoBtn, contactBtn,APItBtn];
+  const sections = [introSection, projectsSection, infoSection, contactSection,apiSection];
+
+  function activateSection(index) {
+    // Ocultar todas las secciones
+    sections.forEach(section => section.classList.add("hidden"));
     
-  
-    // Función para manejar el desplazamiento y mostrar el formulario
-    function handleScrollToContactForm() {
+    // Mostrar la sección activa
+    sections[index].classList.remove("hidden");
 
-      const contactForm = document.getElementById("contact-form-container");
-      contactForm.style.display = "block";
-      // Muestra el formulario de contacto después de un pequeño retraso
-      setTimeout(function() {
-        
-        // Desplaza la página hasta el formulario de contacto
-        contactForm.scrollIntoView({ behavior: "smooth" });
-      }, 500); // Espera 500ms para asegurarte de que el desplazamiento haya terminado
-    }
-  
-    // Añade un evento de clic al botón "Contacto"
-    contactButton.addEventListener("click", function(event) {
-      event.preventDefault(); // Previene la acción predeterminada del enlace
-  
-      // Redirige a la página root con el ancla del formulario de contacto
-      window.location.href = root_path + "#contact-form";
-  
-      // Maneja el desplazamiento y muestra el formulario
-      handleScrollToContactForm();
-    });
-  
-    // Verifica si la página se ha cargado con un ancla específica
-    if (window.location.hash === "#contact-form") {
-      // Maneja el desplazamiento y muestra el formulario
-      handleScrollToContactForm();
-    }
+    // Eliminar la clase activa de todos los botones
+    buttons.forEach(button => button.classList.remove("active"));
+
+    // Agregar la clase activa al botón correspondiente
+    buttons[index].classList.add("active");
+  }
+
+  // Agregar eventos a los botones
+  homeBtn.addEventListener("click", function() {
+    activateSection(0); // Activa Home
   });
+
+  projectsBtn.addEventListener("click", function() {
+    activateSection(1); // Activa Projects
+  });
+
+  infoBtn.addEventListener("click", function() {
+    activateSection(2); // Activa Info
+  });
+
+  contactBtn.addEventListener("click", function() {
+    activateSection(3); // Activa Contact
+  });
+
+  APItBtn.addEventListener("click", function() {
+    activateSection(4); // Activa Contact
+  });
+});

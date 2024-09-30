@@ -1,144 +1,117 @@
-<div class="user-show">
-  <div class="profile-header">
-    <div class="avatar">
-      <%= image_tag @user.avatar, class: 'avatar' %>
+
+<div class="header-bar">
+  <% if user_signed_in? %>
+    <div class="header-actions">
+      <p class="summary-text">Welcome, <%= current_user.email %>!</p>
+      <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "logout-button",data: { turbo: "false" } ) %>
     </div>
-    <div class="user-info">
-      <h1>Jose Luis Rico Ramos</h1>
-      <p> Software Eng.. | ... </p>
+  <% else %>
+    <div class="auth-buttons">
+      <%= button_to("Sign in", new_user_session_path, class: "auth-button",data: { turbo: "false" }) %>
+      <%= button_to("Sign up", new_user_registration_path, method: :get, class: "auth-button",data: { turbo: "false" }) %>
     </div>
-
-    <div class="education-section">
-      <h2 class="education-section-title">Education</h2>
-      <div class="educations">
-        <% @user.educations.each do |education| %>
-          <%= link_to education_path(education), class: "education-card" do %>
-            <div class="education-icon">
-              <%= image_tag education.avatar, size: "30x30" if education.avatar.attached? %>
-            </div>
-            <div class="education-content">
-              <div class="education-title">
-                <h3><%= education.title %></h3>
-              </div>
-            </div>
-          <%end%>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="education-section">
-      <h2 class="education-section-title">Experience</h2>
-      <div class="educations">
-
-        <% @user.experiences.each do |experience| %>
-          <%= link_to experience_path(experience), class: "education-card" do %>
-            <div class="education-icon">
-              <%= image_tag experience.avatar, size: "50x50" if experience.avatar.attached? %>
-            </div>
-            <div class="education-content">
-              <div class="education-title">
-                <h3><%= experience.title %></h3>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-
-      </div>
-    </div>
-
-  </div>
-
-  <div class="summary">
-    <p class="summary-text"> Lorem ipsum dolor sit amet consectetur adipiscing elit ridiculus, dictum dui potenti at ac volutpat parturient, sodales bibendum placerat interdum posuere erat fermentum. Nunc senectus odio eleifend aenean ad nascetur quis, luctus faucibus augue vestibulum habitant aliquam praesent, et tincidunt porta potenti sed neque. Ad dictum sodales malesuada et integer nostra scelerisque cubilia iaculis vivamus nunc, felis parturient nec a mi netus pharetra senectus hac. <br><br>
-
-Congue curabitur fames faucibus venenatis cubilia eleifend, nostra urna mi morbi aliquam massa, nisi sed ullamcorper ultrices justo. Fermentum felis dignissim augue diam cursus dictum elementum, accumsan sagittis lobortis sed in a natoque integer, mi etiam phasellus cubilia faucibus tortor. Penatibus quis platea curae nisi cum senectus mauris tincidunt primis praesent, nulla ridiculus vestibulum mattis cursus magnis urna pharetra dictum, commodo malesuada diam aenean porta nostra nullam risus erat. </p>
-  </div>
-
-  <div class="sections">
-    <div class="section">
-      <h2 class="section-title">Projects</h2>
-      <div class="projects">
-        <% @user.projects.each do |project| %>
-          <%= link_to project_path(project), class: "project-card-link" do %>
-            <div class="project-icon">
-              <%= image_tag project.avatar, size: "100x100" if project.avatar.attached? %>
-            </div>
-            <div class="project-content">
-              <div class="project-title">
-                <h3><%= project.title %></h3>
-              </div>
-              <div class="project-description">
-                <p><%= truncate(project.description, length: 350, omission: '...') %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-
-<!-- Formulario de contacto -->
-<div class="contact-form mt-4">
-  <h2 class="section-title section-title-contact">
-    Contact Me
-    <span class="toggle-icon">+</span>
-  </h2>
-  <div id="contact-form-container" style="display: none;">
-    <%= form_with url: contacts_path, method: :post, local: true do |form| %>
-      <div class="form-group">
-        <%= form.label :email, "Email", class: "form-label" %>
-        <%= form.email_field :email, class: "form-control", required: true %>
-      </div>
-      <div class="form-group">
-        <%= form.label :subject, "Subject", class: "form-label" %>
-        <%= form.text_field :subject, class: "form-control", required: true %>
-      </div>
-      <div class="form-group">
-        <%= form.label :message, "Message", class: "form-label" %>
-        <%= form.text_area :message, class: "form-control", rows: 5, required: true %>
-      </div>
-      <div class="form-group">
-        <%= form.submit "Enviar", class: "btn" %>
-      </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
 
-<h1>Weather Forecast for <%= @city %></h1>
 
-<% if @weather_data %>
-  <h2>Current Weather</h2>
-  <p>Temperature: <%= @weather_data['hourly']['temperature_2m'].first %>°C</p>
-  <p>Relative Humidity: <%= @weather_data['hourly']['relative_humidity_2m'].first %>%</p>
-  <p>Wind Speed: <%= @weather_data['hourly']['wind_speed_120m'].first %> km/h</p>
+<div class="container">
+  <aside class="sidebar">
+    <h1>Jose Luis Rico Ramos</h1>
+    <p>Software Engineer & Backend Developer</p>
+    <ul class="menu">
+      <li><button id="homeBtn">Home</button></li>
+      <li><button id="projectsBtn">Projects</button></li>
+      <li><button id="infoBtn">Info</button></li>
+      <li><button id="contactBtn">Contact</button></li>
+      <li><button id="APIBtn">API</button></li>
+    </ul>
+  </aside>
+  <main class="content">
+    <section id="intro">
+      <p>Nacido en 1994 en Osaka, Japón. Creo que el diseño web puede ser más diverso e inspirador...</p>
+    </section>
 
-  <h2>Forecast for the next 3 days</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Max Temperature (°C)</th>
-        <th>Min Temperature (°C)</th>
-        <th>Average Relative Humidity (%)</th>
-        <th>Average Wind Speed (km/h)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @weather_data['hourly']['time'].each_slice(24).with_index do |times, index| %>
-        <% next if index >= 3 %>
-        <tr>
-          <td><%= times.first.to_date %></td>
-          <td><%= @weather_data['hourly']['temperature_2m'][index*24, 24].max %></td>
-          <td><%= @weather_data['hourly']['temperature_2m'][index*24, 24].min %></td>
-          <td><%= (@weather_data['hourly']['relative_humidity_2m'][index*24, 24].sum / 24.0).round(2) %></td>
-          <td><%= (@weather_data['hourly']['wind_speed_120m'][index*24, 24].sum / 24.0).round(2) %></td>
-        </tr>
+    <!-- Sección Projects -->
+    <section id="projects" class="hidden">
+      <ul>
+        <li>Jul. 2024 / Portfolio / Dev - emuni</li>
+        <li>Apr. 2024 / Special / Design & Dev - UNDER VOYAGER</li>
+        <li>Feb. 2024 / Portfolio / Design & Dev - obake.blue</li>
+        <li>Jan. 2024 / Portfolio / Design & Dev - cocoon records</li>
+      </ul>
+    </section>
+
+    <!-- Sección API -->
+    <section id="api" class="hidden">
+      <% if @weather_data %>
+        <h2>Current Weather</h2>
+        <p>Temperature: <%= @weather_data['hourly']['temperature_2m'].first %>°C</p>
+        <p>Relative Humidity: <%= @weather_data['hourly']['relative_humidity_2m'].first %>%</p>
+        <p>Wind Speed: <%= @weather_data['hourly']['wind_speed_120m'].first %> km/h</p>
+
+        <h2>Forecast for the next 3 days</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Max Temperature (°C)</th>
+              <th>Min Temperature (°C)</th>
+              <th>Average Relative Humidity (%)</th>
+              <th>Average Wind Speed (km/h)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @weather_data['hourly']['time'].each_slice(24).with_index do |times, index| %>
+              <% next if index >= 3 %>
+              <tr>
+                <td><%= times.first.to_date %></td>
+                <td><%= @weather_data['hourly']['temperature_2m'][index*24, 24].max %></td>
+                <td><%= @weather_data['hourly']['temperature_2m'][index*24, 24].min %></td>
+                <td><%= (@weather_data['hourly']['relative_humidity_2m'][index*24, 24].sum / 24.0).round(2) %></td>
+                <td><%= (@weather_data['hourly']['wind_speed_120m'][index*24, 24].sum / 24.0).round(2) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>No weather data available.</p>
       <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No weather data available.</p>
-<% end %>
+    </section>
 
+    <!-- Sección Info -->
+    <section id="info" class="hidden">
+      <h2>Info</h2>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/jlricoramos/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/RiiC0Chet" target="_blank">GitHub</a></li>
+      </ul>
+    </section>
+
+    <!-- Sección Contact -->
+    <section id="contact" class="hidden">
+      <h2>Contact Me</h2>
+      <div class="contact-form">
+        <%= form_with url: contacts_path, method: :post, local: true do |form| %>
+          <div class="form-group">
+            <%= form.label :email, "Email", class: "form-label" %>
+            <%= form.email_field :email, class: "form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :subject, "Subject", class: "form-label" %>
+            <%= form.text_field :subject, class: "form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :message, "Message", class: "form-label" %>
+            <%= form.text_area :message, class: "form-control", rows: 5, required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.submit "Enviar", class: "btn" %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+
+
+  </main>
 </div>

@@ -23,37 +23,26 @@
 
   </head>
 
-  <div style="text-align: right;">
-    <% if user_signed_in? %>
-      <div class="header-actions">
-        <p class="summary-text">Welcome, <%= current_user.email %>!</p>
-        <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "logout-button" ) %>
-      </div>
-    <% else %>
-      <div class="auth-buttons">
-        <%= button_to("Sign in", new_user_session_path, class: "auth-button") %>
-        <%= button_to("Sign up", new_user_registration_path, method: :get, class: "auth-button") %>
-      </div>
-    <% end %>
-  </div>
   
-<header class="site-header">
+<!--<header class="site-header">
   <nav class="main-nav" style="color: white">
     <ul>
       <li ><%= link_to("Inicio", root_path, method: :get, class: "nav-button", data: { turbo: "false" }) %></li>
       <li><%= link_to("Contacto", root_path(anchor: "contact-form"), method: :get, class: "nav-button", data: { turbo: "false" }) %></li>
     </ul>
   </nav>
-</header>
+</header>-->
+
+
 
 <body>
-  <%= yield %>
+      <%= yield %>
 </body>
-
+<!--
 <footer class="site-footer">
   <div class="footer-content">
     <p>&copy; <%= Time.now.year %> Jose Luis Rico Ramos.</p>
   </div>
-</footer>
+</footer>-->
 
 </html>

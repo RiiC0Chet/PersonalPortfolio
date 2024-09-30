@@ -48,4 +48,59 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  config.model 'Project' do
+    list do
+      field :title
+      field :description
+      field :technologies do
+        formatted_value do
+          value.join(', ') if value.present?
+        end
+      end
+      field :features do
+        formatted_value do
+          value.join(', ') if value.present?
+        end
+      end
+      field :github
+      field :user
+      field :experience
+      field :avatar
+    end
+
+    edit do
+      field :title
+      field :description
+      field :technologies, :serialized do
+        help 'Array of technologies (comma separated)'
+      end
+      field :features, :serialized do
+        help 'Array of features (comma separated)'
+      end
+      field :github
+      field :avatar
+      field :user
+      field :experience
+    end
+
+    show do
+      field :title
+      field :description
+      field :technologies do
+        formatted_value do
+          value.join(', ') if value.present?
+        end
+      end
+      field :features do
+        formatted_value do
+          value.join(', ') if value.present?
+        end
+      end
+      field :github
+      field :avatar
+      field :user
+      field :experience
+    end
+  end
+
 end
