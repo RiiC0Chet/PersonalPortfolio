@@ -42,15 +42,17 @@
     </section>
 
     <!-- Sección API -->
-    <section id="api" class="hidden">
+    <section id="api" class="api-section hidden">
       <% if @weather_data %>
-        <h2>Current Weather</h2>
-        <p>Temperature: <%= @weather_data['hourly']['temperature_2m'].first %>°C</p>
-        <p>Relative Humidity: <%= @weather_data['hourly']['relative_humidity_2m'].first %>%</p>
-        <p>Wind Speed: <%= @weather_data['hourly']['wind_speed_120m'].first %> km/h</p>
+        <h2 class="api-title">Current Weather</h2>
+        <div class="weather-info">
+          <p class="weather-detail">Temperature: <%= @weather_data['hourly']['temperature_2m'].first %>°C</p>
+          <p class="weather-detail">Relative Humidity: <%= @weather_data['hourly']['relative_humidity_2m'].first %>%</p>
+          <p class="weather-detail">Wind Speed: <%= @weather_data['hourly']['wind_speed_120m'].first %> km/h</p>
+        </div>
 
-        <h2>Forecast for the next 3 days</h2>
-        <table>
+        <h2 class="api-title">Forecast for the next 3 days</h2>
+        <table class="weather-forecast">
           <thead>
             <tr>
               <th>Date</th>
@@ -74,18 +76,18 @@
           </tbody>
         </table>
       <% else %>
-        <p>No weather data available.</p>
+        <p class="no-data">No weather data available.</p>
       <% end %>
     </section>
 
-    <!-- Sección Info -->
-    <section id="info" class="hidden">
-      <h2>Info</h2>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/jlricoramos/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://github.com/RiiC0Chet" target="_blank">GitHub</a></li>
-      </ul>
-    </section>
+      <!-- Sección Info -->
+      <section id="info" class="hidden">
+        <h2>Info</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/jlricoramos/" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/RiiC0Chet" target="_blank">GitHub</a></li>
+        </ul>
+      </section>
 
     <!-- Sección Contact -->
     <section id="contact" class="hidden">
