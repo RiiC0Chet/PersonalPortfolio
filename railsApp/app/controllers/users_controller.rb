@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
   
     def show
-      @weather_data = fetch_weather_data
+      @weather_data = fetch_weather_data(params[:latitude], params[:longitude])
       @user = User.find(1)
       authorize @user
     end
@@ -84,14 +84,20 @@ class UsersController < ApplicationController
       end
     end
 
-    def fetch_weather_data
+    def fetch_weather_data(latitude = '53.3331', longitude = '-6.2489')
       # URL de la API de Open-Meteo
-      url = "https://api.open-meteo.com/v1/forecast?latitude=53.3331&longitude=-6.2489&hourly=temperature_2m,relative_humidity_2m,wind_speed_120m&timezone=GMT"
+      url = "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&hourly=temperature_2m,relative_humidity_2m,wind_speed_120m&timezone=GMT"
       
       # Realiza la solicitud HTTP
       uri = URI(url)
       response = Net::HTTP.get(uri)
-      JSON.parse(response)
+      
+      begin
+        JSON.parse(response)
+      rescue JSON::ParserError => e
+        Rails.logger.error("Failed to parse JSON: #{e.message}")
+        nil
+      end
     end
 
 

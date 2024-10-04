@@ -27,7 +27,7 @@
     </ul>
   </aside>
   <main class="content">
-    <section id="intro">
+    <section id="intro" class="hidden">
       <p>Nacido en 1994 en Osaka, Japón. Creo que el diseño web puede ser más diverso e inspirador...</p>
     </section>
 
@@ -43,6 +43,19 @@
 
     <!-- Sección API -->
     <section id="api" class="api-section hidden">
+      <h2 class="api-title">Weather Information</h2>
+      <%= form_with url: user_path(@user), method: :get, local: true, id: "weather-form", class: "weather-form" do %>
+        <div class="form-group">
+          <%= label_tag :latitude, "Latitude" %>
+          <%= text_field_tag :latitude, params[:latitude], class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :longitude, "Longitude" %>
+          <%= text_field_tag :longitude, params[:longitude], class: "form-control" %>
+        </div>
+        <%= submit_tag "Get Weather", class: "btn btn-primary" %>
+      <% end %>
+
       <% if @weather_data %>
         <h2 class="api-title">Current Weather</h2>
         <div class="weather-info">
@@ -80,14 +93,14 @@
       <% end %>
     </section>
 
-      <!-- Sección Info -->
-      <section id="info" class="hidden">
-        <h2>Info</h2>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/jlricoramos/" target="_blank">LinkedIn</a></li>
-          <li><a href="https://github.com/RiiC0Chet" target="_blank">GitHub</a></li>
-        </ul>
-      </section>
+    <!-- Sección Info -->
+    <section id="info" class="hidden">
+      <h2>Info</h2>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/jlricoramos/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/RiiC0Chet" target="_blank">GitHub</a></li>
+      </ul>
+    </section>
 
     <!-- Sección Contact -->
     <section id="contact" class="hidden">

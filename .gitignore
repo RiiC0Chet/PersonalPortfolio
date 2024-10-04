@@ -3,3 +3,6 @@
 
 # Ignorar el archivo master.key de Rails
 railsApp/config/master.key
+
+# Ignorar la carpeta node_modules
+railsApp/node_modules

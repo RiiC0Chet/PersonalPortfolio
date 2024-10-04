@@ -48,4 +48,29 @@ document.addEventListener("DOMContentLoaded", function() {
   APItBtn.addEventListener("click", function() {
     activateSection(4); // Activa Contact
   });
+
+  // Mostrar la sección de la API si hay datos disponibles
+  if (apiSection && !apiSection.classList.contains('hidden')) {
+    activateSection(4);
+  }
+
+  // Manejar el envío del formulario
+  const weatherForm = document.getElementById('weather-form');
+  weatherForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const latitude = document.querySelector('input[name="latitude"]').value;
+    const longitude = document.querySelector('input[name="longitude"]').value;
+    const url = new URL(window.location.href);
+    url.searchParams.set('latitude', latitude);
+    url.searchParams.set('longitude', longitude);
+    url.searchParams.set('section', 'api');
+    window.location.href = url.toString();
+  });
+
+  // Mostrar la sección de la API si el parámetro 'section' está presente en la URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('section') === 'api') {
+    activateSection(4);
+  }
+  
 });
