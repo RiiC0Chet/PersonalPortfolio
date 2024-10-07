@@ -1,3 +1,6 @@
+<script>
+  const projects = <%= @projects.to_json.html_safe %>;
+</script>
 
 <div class="header-bar">
   <% if user_signed_in? %>
@@ -32,13 +35,54 @@
     </section>
 
     <!-- Sección Projects -->
-    <section id="projects" class="hidden">
+    <section id="projects" class="projects-list hidden">
       <ul>
-        <li>Jul. 2024 / Portfolio / Dev - emuni</li>
-        <li>Apr. 2024 / Special / Design & Dev - UNDER VOYAGER</li>
-        <li>Feb. 2024 / Portfolio / Design & Dev - obake.blue</li>
-        <li>Jan. 2024 / Portfolio / Design & Dev - cocoon records</li>
+        <% @user.projects.each do |project| %>
+          <li>
+            <span class="date">
+              <% project.technologies.each do |technology| %>
+                <%= technology %><% if technology != project.technologies.last %>, <% end %>
+              <% end %>
+            </span> / 
+
+            <span class="project">
+              <a href="#" onclick="showProjectDetails(<%= project.id %>); return false;"><%= project.title %></a>
+            </span>
+
+            <span>
+              <%= image_tag project.avatar, size: "50x50" if project.avatar.attached? %>
+            </span>
+
+          </li>
+        <% end %>
       </ul>
+    </section>
+
+    <!-- Sección Project Details -->
+    <section id="project-details" class="hidden">
+      
+      <h2 class="api-title" id="project-title"></h2>
+      <div class="project-avatar-container">
+        <img id="project-avatar" src="" alt="Project Avatar" class="project-avatar">
+      </div>
+          <h2 class="api-title" id="project-title"></h2>
+      <div class="project-info">
+        <h3>Description:</h3>
+        <p id="project-description"></p>
+      </div>
+      <div class="project-info">
+        <h3>Technologies:</h3>
+        <p id="project-technologies"></p>
+      </div>
+      <div class="project-info">
+        <h3>Features:</h3>
+        <ul id="project-features"></ul>
+      </div>
+      <div class="project-info" id="project-github-container">
+        <h3>GitHub:</h3>
+        <p id="project-github"></p>
+      </div>
+      <button class="btn" onclick="showProjectsList()">Back to Projects</button>
     </section>
 
     <!-- Sección API -->
@@ -95,7 +139,6 @@
 
     <!-- Sección Info -->
     <section id="info" class="hidden">
-      <h2>Info</h2>
       <ul>
         <li><a href="https://www.linkedin.com/in/jlricoramos/" target="_blank">LinkedIn</a></li>
         <li><a href="https://github.com/RiiC0Chet" target="_blank">GitHub</a></li>

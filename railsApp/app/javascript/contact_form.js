@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const infoSection = document.getElementById('info');
   const contactSection = document.getElementById('contact');
   const apiSection = document.getElementById('api');
+  const projectDetailsSection = document.getElementById('project-details');
 
   const buttons = [homeBtn, projectsBtn, infoBtn, contactBtn,APItBtn];
-  const sections = [introSection, projectsSection, infoSection, contactSection,apiSection];
+  const sections = [introSection, projectsSection, infoSection, contactSection,apiSection,projectDetailsSection];
 
   function activateSection(index) {
     // Ocultar todas las secciones
@@ -72,5 +73,52 @@ document.addEventListener("DOMContentLoaded", function() {
   if (urlParams.get('section') === 'api') {
     activateSection(4);
   }
+
+    // Función para mostrar los detalles del proyecto
+    window.showProjectDetails = function(projectId) {
+      // Ocultar la lista de proyectos
+      projectsSection.classList.add("hidden");
+  
+      // Mostrar la sección de detalles del proyecto
+      projectDetailsSection.classList.remove("hidden");
+  
+      // Obtener los detalles del proyecto (esto es solo un ejemplo, deberías obtener los datos del servidor)
+      const project = projects.find(p => p.id === projectId);
+  
+      // Actualizar el contenido de la sección de detalles del proyecto
+      document.getElementById('project-title').innerText = project.title;
+      document.getElementById('project-description').innerText = project.description;
+      document.getElementById('project-technologies').innerText = project.technologies.join(', ');
+      document.getElementById('project-features').innerText = project.features.join(', ');
+
+
+      // Actualizar el avatar del proyecto
+      const projectAvatar = document.getElementById('project-avatar');
+      if (project.avatar_url) {
+        projectAvatar.src = project.avatar_url;
+        projectAvatar.style.display = 'block';
+      } else {
+        console.log(project.avatar_url);
+        projectAvatar.style.display = 'none';
+      }
+
+      // Actualizar el enlace de GitHub solo si no es null
+      const projectGithubContainer = document.getElementById('project-github-container');
+      if (project.github) {
+        document.getElementById('project-github').innerHTML = `<a href="${project.github}" target="_blank">${project.github}</a>`;
+        projectGithubContainer.style.display = 'block';
+      } else {
+        projectGithubContainer.style.display = 'none';
+      }
+    };
+  
+    // Función para volver a la lista de proyectos
+    window.showProjectsList = function() {
+      // Ocultar la sección de detalles del proyecto
+      projectDetailsSection.classList.add("hidden");
+  
+      // Mostrar la lista de proyectos
+      projectsSection.classList.remove("hidden");
+    };
   
 });

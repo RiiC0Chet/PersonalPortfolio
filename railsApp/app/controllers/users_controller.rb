@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     def show
       @weather_data = fetch_weather_data(params[:latitude], params[:longitude])
       @user = User.find(1)
+      @projects = @user.projects.map do |project|
+        project.as_json.merge(
+          avatar_url: project.avatar.attached? ? url_for(project.avatar) : nil
+        )
+      end
       authorize @user
     end
   

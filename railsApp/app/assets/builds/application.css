@@ -53,12 +53,13 @@ body {
 .sidebar {
   background-color: #f4f4f4;
   padding: 20px;
-  width: 350px;
+  width: 20%;
 }
 
 .content {
   flex-grow: 1; /* Ocupar el espacio restante */
-  padding: 20px;
+  padding: 5%;
+  max-width: 80%;
 }
 
 .hidden {
@@ -243,4 +244,89 @@ body {
   color: #888;
   text-align: center;
   margin-top: 20px;
+}
+
+/***************************************************************************************************************************************/
+.projects-list {
+  text-align: right; /* Alinear el texto a la derecha */
+  margin: 50px auto; /* Centrando la lista */
+  padding-right: 20px; /* Espaciado a la derecha */
+}
+
+.projects-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.projects-list li {
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  line-height: 2rem;
+  margin-bottom: 40px; /* Más espacio entre proyectos */
+  color: #000; /* Color del texto */
+  display: flex; /* Añadir display: flex para activar Flexbox */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: flex-end; /* Alinear a la derecha */
+  transition: transform 0.3s ease; /* Animación de expansión */
+}
+
+.projects-list li:hover {
+  transform: scale(1.1); /* Expansión al pasar el cursor */
+}
+
+
+.projects-list .date {
+  font-size: 1.2rem;
+  color: #555; /* Colores más suaves para las fechas */
+  margin-right: 20px;
+}
+
+.projects-list .project {
+  font-weight:lighter;
+  color: #000;
+  font-size: 2rem; /* Tamaño de letra más grande para los títulos */
+}
+
+/* Texto en negrita para el proyecto */
+.projects-list li .project {
+  font-weight: 900; /* Negrita */
+  letter-spacing: 0.1em; /* Espaciado entre letras */
+}
+
+.projects-list a {
+  text-decoration: none;
+  color: inherit; /* Mantener el color del texto */
+}
+
+/* Estilos para la sección de detalles del proyecto */
+#project-details {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: auto; /* Manejar el desbordamiento del contenido */
+}
+
+#project-details h2,
+#project-details h3,
+#project-details p,
+#project-details ul {
+  margin-bottom: 20px; /* Espacio entre los elementos */
+}
+
+#project-details button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#project-details button:hover {
+  background-color: #555;
+}
+
+.project-avatar {
+  width: 100px;
+  height: 100px;
 }
