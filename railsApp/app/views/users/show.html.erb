@@ -30,8 +30,27 @@
     </ul>
   </aside>
   <main class="content">
-    <section id="intro" class="hidden">
-      <p>Nacido en 1994 en Osaka, Japón. Creo que el diseño web puede ser más diverso e inspirador...</p>
+
+    <section id="intro">
+      <div class="avatar-container">
+        <%= image_tag @user.avatar, size: "250x250", class: "user-avatar" if @user.avatar.attached? %>
+      </div>
+      <h1 class="intro-title">Hi, I´m Jose :)</h1>
+      <p class="intro-paragraph intro-paragraph-top">A software engineer with a great affection for the backend. Experienced in creating scalable, testable, reliable and maintainable applications that deliver great value!</p>
+      <p class="intro-paragraph">...In case you haven't noticed... This portfolio itself is a web application! Take a look at all the features it has:</p>
+      
+      <ul class="features-list">
+        <li>User management</li>
+        <li>Weather API (you can adjust it by entering your coordinates)</li>
+        <li>It has its own DDBB (PostgreSQL)</li>
+        <li>Architectural pattern MVP</li>
+        <li>Models and views relationships</li>
+        <li>Mailer (If you want to contact me, don't hesitate!)</li>
+        <li>Administration panel (RailsAdmin)</li>
+        <li>Data Security</li>
+        <li>File Systems (with avatars for the models)</li>
+        <li>Security and Authorization (Pundit way)</li>
+      </ul>
     </section>
 
     <!-- Sección Projects -->
@@ -142,6 +161,7 @@
       <ul>
         <li><a href="https://www.linkedin.com/in/jlricoramos/" target="_blank">LinkedIn</a></li>
         <li><a href="https://github.com/RiiC0Chet" target="_blank">GitHub</a></li>
+        <li><a href="https://drive.google.com/file/d/14qDwaP1jy6EUl-rZU2XJTO6qLaEDVPts/view?usp=sharing" target="_blank">CV/Resume</a></li>
       </ul>
     </section>
 

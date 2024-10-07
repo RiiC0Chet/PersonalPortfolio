@@ -329,3 +329,49 @@ body {
   width: 100px;
   height: 100px;
 }
+
+
+/***********************/
+
+#intro {
+  text-align: left;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 30px;
+}
+
+.user-avatar {
+  border: 5px solid #333; /* Color del marco */
+  box-sizing: border-box; /* Incluir el borde en el tamaño total */
+}
+
+.intro-title {
+  font-size: 2.5rem;
+  color: #333; /* Mismo color que el marco */
+  margin-bottom: 60px;
+}
+
+.intro-paragraph {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0 auto;
+}
+
+.features-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.features-list li {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.intro-paragraph-top {
+  margin-bottom: 40px;
+}
