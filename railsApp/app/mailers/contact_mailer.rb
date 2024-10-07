@@ -1,6 +1,7 @@
 class ContactMailer < ApplicationMailer
   default to: "jlricoramos@gmail.com"
-
+  default from: "jlricoramos@gmail.com"
+  
   def welcome_email(user)
     @user = user
     mail(to: @user.email, subject: 'Welcome to My Own Portfolio')

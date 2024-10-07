@@ -1,6 +1,67 @@
-<h1>Welcome <%= @user.email %> to Send Email in Rails 7 App! </h1>
-<p>
-  You have successfully signed up to my portfolio app!
-  Your username is: <%= @user.email %>.<br>
-</p>
-<p>Thanks for Signing up and have a great day!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #dddddd;
+      }
+      .header h1 {
+        margin: 0;
+        color: #333333;
+      }
+      .content {
+        padding: 20px;
+      }
+      .content p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #666666;
+      }
+      .content p strong {
+        color: #333333;
+      }
+      .footer {
+        text-align: center;
+        padding: 10px 0;
+        border-top: 1px solid #dddddd;
+        margin-top: 20px;
+      }
+      .footer p {
+        font-size: 14px;
+        color: #999999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Thanks for signed up at my Portfolio WebApp!</h1>
+      </div>
+      <div class="content">
+        <p><strong>Message:</strong></p>
+        <p>Wellcome, <%= @user.email %>.  I hope you found my projects interesting :)</p>
+      </div>
+      <div class="footer">
+        <p>&copy; <%= Time.now.year %> Jose Luis Rico Ramos. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>
