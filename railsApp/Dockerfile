@@ -6,7 +6,9 @@ WORKDIR /app
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y nodejs
+    apt-get install -y nodejs npm && \
+    npm install -g yarn && \
+    yarn install
 
 # Install dependencies.
 COPY Gemfile ./Gemfile
